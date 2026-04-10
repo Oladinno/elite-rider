@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { SymbolView } from 'expo-symbols';
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import {
   ScrollView,
@@ -22,7 +22,7 @@ export default function WalletScreen() {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-          <SymbolView name="chevron.left" size={24} tintColor="#0f172a" />
+          <Ionicons name="chevron-back" size={24} color="#0f172a" />
         </TouchableOpacity>
         <ThemedText style={styles.headerTitle}>Wallet</ThemedText>
         <View style={{ width: 40 }} />
@@ -46,13 +46,13 @@ export default function WalletScreen() {
             style={styles.actionButton}
             onPress={() => router.push('/add-funds')}>
             <View style={styles.actionIconContainer}>
-              <SymbolView name="plus" size={20} tintColor="#0b6f50" />
+              <Ionicons name="add" size={20} color="#0b6f50" />
             </View>
             <ThemedText style={styles.actionLabel}>Add Funds</ThemedText>
           </TouchableOpacity>
           <TouchableOpacity style={styles.actionButton}>
             <View style={styles.actionIconContainer}>
-              <SymbolView name="paperplane.fill" size={20} tintColor="#0b6f50" />
+              <Ionicons name="paper-plane" size={20} color="#0b6f50" />
             </View>
             <ThemedText style={styles.actionLabel}>Send Money</ThemedText>
           </TouchableOpacity>
@@ -67,21 +67,21 @@ export default function WalletScreen() {
         </View>
         <View style={styles.methodsCard}>
           <PaymentMethodItem
-            icon="wallet.pass.fill"
+            icon="wallet"
             title="Adamawa Rides Wallet"
             subtitle="Default method"
             selected={true}
             color="#0b6f50"
           />
           <PaymentMethodItem
-            icon="banknote.fill"
+            icon="cash"
             title="Cash Payment"
             subtitle="Pay directly to driver"
             selected={false}
             color="#10b981"
           />
           <PaymentMethodItem
-            icon="creditcard.fill"
+            icon="card"
             title="Mastercard **** 1234"
             subtitle="Expires 12/26"
             selected={false}
@@ -98,20 +98,20 @@ export default function WalletScreen() {
         </View>
         <View style={styles.transactionsContainer}>
           <TransactionItem
-            icon="car.fill"
+            icon="car"
             title="Trip ID #8823"
             subtitle="Today, 10:30 AM"
             amount="- ₦500"
           />
           <TransactionItem
-            icon="plus.circle.fill"
+            icon="add-circle"
             title="Wallet Top-up"
             subtitle="Yesterday, 4:15 PM"
             amount="+ ₦2,000"
             isPositive
           />
           <TransactionItem
-            icon="car.fill"
+            icon="car"
             title="Trip ID #8742"
             subtitle="Oct 24, 09:12 AM"
             amount="- ₦750"
@@ -140,7 +140,7 @@ function PaymentMethodItem({
     <TouchableOpacity style={styles.methodItem}>
       <View style={styles.methodContent}>
         <View style={[styles.methodIconContainer, { backgroundColor: `${color}1A` }]}>
-          <SymbolView name={icon as any} size={20} tintColor={color} />
+          <Ionicons name={icon as any} size={20} color={color} />
         </View>
         <View>
           <ThemedText style={styles.methodTitle}>{title}</ThemedText>
@@ -171,7 +171,7 @@ function TransactionItem({
     <View style={styles.transactionItem}>
       <View style={styles.methodContent}>
         <View style={styles.transactionIconContainer}>
-          <SymbolView name={icon as any} size={18} tintColor="#64748b" />
+          <Ionicons name={icon as any} size={18} color="#64748b" />
         </View>
         <View>
           <ThemedText style={styles.methodTitle}>{title}</ThemedText>

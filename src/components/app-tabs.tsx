@@ -18,10 +18,10 @@ export default function AppTabs() {
   const insets = useSafeAreaInsets();
 
   const tabs = [
-    { name: 'HOME', icon: 'home', route: '/' },
+    { name: 'HOME', icon: 'home', route: '/home' },
     { name: 'TRIPS', icon: 'map', route: '/activity' },
     { name: 'WALLET', icon: 'wallet', route: '/wallet' },
-    { name: 'ACTIVITY', icon: 'notifications', route: '/notifications' },
+    { name: 'NOTIFICATIONS', icon: 'notifications', route: '/notifications' },
     { name: 'PROFILE', icon: 'person', route: '/account' },
   ] as const;
 
@@ -29,9 +29,7 @@ export default function AppTabs() {
     <View style={[styles.container, { paddingBottom: Math.max(insets.bottom, 16) }]}>
       <View style={styles.bar}>
         {tabs.map((tab) => {
-          const isActive =
-            pathname === tab.route ||
-            (tab.route === '/' && (pathname === '/(tabs)' || pathname === '/'));
+          const isActive = pathname === tab.route;
           const tintColor = isActive ? '#0b6f50' : '#94a3b8';
 
           return (

@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { SymbolView } from 'expo-symbols';
+import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
@@ -28,7 +28,7 @@ export default function AddFundsScreen() {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-          <SymbolView name="chevron.left" size={24} tintColor="#0f172a" />
+          <Ionicons name="chevron-back" size={24} color="#0f172a" />
         </TouchableOpacity>
         <ThemedText style={styles.headerTitle}>Add Funds</ThemedText>
         <View style={{ width: 40 }} />
@@ -59,7 +59,7 @@ export default function AddFundsScreen() {
                 placeholderTextColor="#64748b"
               />
               <TouchableOpacity onPress={() => setAmount('')} style={styles.clearButton}>
-                <SymbolView name="xmark.circle.fill" size={20} tintColor="#0fbd58" />
+                <Ionicons name="close-circle" size={20} color="#0fbd58" />
               </TouchableOpacity>
             </View>
           </View>
@@ -91,7 +91,7 @@ export default function AddFundsScreen() {
           </View>
           <View style={styles.methodsContainer}>
             <MethodRadio
-              icon="creditcard.fill"
+              icon="card"
               title="Pay with Card"
               subtitle="Secured by Paystack / Flutterwave"
               value="card"
@@ -99,7 +99,7 @@ export default function AddFundsScreen() {
               onPress={() => setMethod('card')}
             />
             <MethodRadio
-              icon="number.circle.fill"
+              icon="keypad"
               title="USSD Code"
               subtitle="Dial code to pay offline"
               value="ussd"
@@ -107,7 +107,7 @@ export default function AddFundsScreen() {
               onPress={() => setMethod('ussd')}
             />
             <MethodRadio
-              icon="banknote.fill"
+              icon="cash"
               title="Bank Transfer"
               subtitle="Direct transfer to account"
               value="transfer"
@@ -124,7 +124,7 @@ export default function AddFundsScreen() {
       <View style={styles.footer}>
         <TouchableOpacity style={styles.confirmButton}>
           <ThemedText style={styles.confirmText}>Confirm Top-up</ThemedText>
-          <SymbolView name="arrow.right" size={20} tintColor="white" />
+          <Ionicons name="arrow-forward" size={20} color="white" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -151,7 +151,7 @@ function MethodRadio({
       onPress={onPress}
       style={[styles.methodRadio, active && styles.activeMethodRadio]}>
       <View style={styles.methodIconContainer}>
-        <SymbolView name={icon as any} size={24} tintColor="#0fbd58" />
+        <Ionicons name={icon as any} size={24} color="#0fbd58" />
       </View>
       <View style={styles.methodInfo}>
         <ThemedText style={styles.methodTitle}>{title}</ThemedText>

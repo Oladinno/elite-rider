@@ -1,4 +1,4 @@
-import { SymbolView } from 'expo-symbols';
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
@@ -20,9 +20,9 @@ export function ActivityItem({ pickup, destination, price, date }: ActivityItemP
       <View style={styles.topRow}>
         <View style={styles.addressSection}>
           <View style={styles.timelineIndicators}>
-            <SymbolView name="circle.fill" size={10} tintColor="#0b6f50" />
+            <Ionicons name="ellipse" size={10} color="#0b6f50" />
             <View style={styles.timelineLine} />
-            <SymbolView name="mappin.circle.fill" size={10} tintColor="#0b6f50" />
+            <Ionicons name="location" size={10} color="#0b6f50" />
           </View>
           <View style={styles.addressTexts}>
             <View>

@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { SymbolView } from 'expo-symbols';
+import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
@@ -23,7 +23,7 @@ export default function SupportChatScreen() {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-          <SymbolView name="chevron.left" size={24} tintColor="#0b6f50" />
+          <Ionicons name="chevron-back" size={24} color="#0b6f50" />
         </TouchableOpacity>
         <View style={styles.headerTitleContainer}>
           <ThemedText style={styles.headerTitle}>Support Chat</ThemedText>
@@ -33,7 +33,7 @@ export default function SupportChatScreen() {
           </View>
         </View>
         <TouchableOpacity style={styles.callButton}>
-          <SymbolView name="phone.fill" size={20} tintColor="#0b6f50" />
+          <Ionicons name="call" size={20} color="#0b6f50" />
         </TouchableOpacity>
       </View>
 
@@ -65,7 +65,7 @@ export default function SupportChatScreen() {
         {/* Message Input */}
         <View style={styles.inputArea}>
           <TouchableOpacity style={styles.attachmentButton}>
-            <SymbolView name="plus" size={24} tintColor="#94a3b8" />
+            <Ionicons name="add" size={24} color="#94a3b8" />
           </TouchableOpacity>
           <View style={styles.inputWrapper}>
             <TextInput
@@ -79,7 +79,7 @@ export default function SupportChatScreen() {
           <TouchableOpacity
             style={[styles.sendButton, !message && styles.sendButtonDisabled]}
             disabled={!message}>
-            <SymbolView name="paperplane.fill" size={20} tintColor="white" />
+            <Ionicons name="send" size={20} color="white" />
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>

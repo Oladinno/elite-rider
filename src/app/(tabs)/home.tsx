@@ -1,4 +1,4 @@
-import { SymbolView } from 'expo-symbols';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import {
   Image,
@@ -15,10 +15,14 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
+import { useRideStore } from '@/store/use-ride-store';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
   const theme = useTheme();
+  const router = useRouter();
+  const { pickup } = useRideStore();
 
   return (
     <View style={styles.container}>
@@ -35,17 +39,17 @@ export default function HomeScreen() {
           {/* Simulated Map Markers */}
           <View style={[styles.marker, { top: '40%', left: '30%' }]}>
             <View style={styles.markerBadge}>
-              <SymbolView name="car" size={20} tintColor="#0b6f50" />
+              <Ionicons name="car" size={20} color="#0b6f50" />
             </View>
           </View>
           <View style={[styles.marker, { top: '32%', right: '25%' }]}>
             <View style={styles.markerBadge}>
-              <SymbolView name="car.fill" size={20} tintColor="#0b6f50" />
+              <Ionicons name="car" size={20} color="#0b6f50" />
             </View>
           </View>
           <View style={[styles.marker, { bottom: '45%', left: '60%' }]}>
             <View style={styles.markerBadge}>
-              <SymbolView name="car.side" size={20} tintColor="#0b6f50" />
+              <Ionicons name="car" size={20} color="#0b6f50" />
             </View>
           </View>
 
@@ -64,15 +68,18 @@ export default function HomeScreen() {
         {/* Top Search Bar */}
         <View style={styles.searchBarContainer}>
           <TouchableOpacity style={styles.menuButton}>
-            <SymbolView name="line.3.horizontal" size={24} tintColor="#64748b" />
+            <Ionicons name="menu" size={24} color="#64748b" />
           </TouchableOpacity>
-          <View style={styles.searchPrompt}>
+          <TouchableOpacity 
+            style={styles.searchPrompt}
+            onPress={() => router.push('/ride-search')}
+          >
             <View style={styles.statusDot} />
             <ThemedText style={styles.searchText}>Where to?</ThemedText>
-          </View>
+          </TouchableOpacity>
           <View style={styles.topRightActions}>
             <TouchableOpacity style={styles.scheduleButton}>
-              <SymbolView name="clock" size={20} tintColor="#94a3b8" />
+              <Ionicons name="time" size={20} color="#94a3b8" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.profileButton}>
               <Image
@@ -90,10 +97,10 @@ export default function HomeScreen() {
         {/* SOS & Recenter Buttons */}
         <View style={styles.floatingButtonsContainer}>
           <TouchableOpacity style={styles.recenterButton}>
-            <SymbolView name="location.fill" size={24} tintColor="#334155" />
+            <Ionicons name="location" size={24} color="#334155" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.sosButton}>
-            <SymbolView name="shield.fill" size={20} tintColor="white" />
+            <Ionicons name="shield" size={20} color="white" />
             <ThemedText style={styles.sosText}>SOS</ThemedText>
           </TouchableOpacity>
         </View>
@@ -116,12 +123,15 @@ export default function HomeScreen() {
                 <View style={styles.pickupSection}>
                   <ThemedText style={styles.label}>Pickup</ThemedText>
                   <View style={styles.pickupRow}>
-                    <ThemedText style={styles.pickupText}>Jimeta Road, Yola</ThemedText>
-                    <SymbolView name="pencil" size={14} tintColor="#94a3b8" />
+                    <ThemedText style={styles.pickupText}>{pickup?.address || 'Current Location'}</ThemedText>
+                    <Ionicons name="pencil" size={14} color="#94a3b8" />
                   </View>
                 </View>
-                <TouchableOpacity style={styles.destinationSearch}>
-                  <SymbolView name="magnifyingglass" size={20} tintColor="#94a3b8" />
+                <TouchableOpacity 
+                  style={styles.destinationSearch}
+                  onPress={() => router.push('/ride-search')}
+                >
+                  <Ionicons name="search" size={20} color="#94a3b8" />
                   <ThemedText style={styles.destinationPlaceholder}>
                     Where are you going?
                   </ThemedText>
@@ -134,10 +144,10 @@ export default function HomeScreen() {
               horizontal
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.quickActionsContainer}>
-              <QuickActionButton icon="house.fill" label="Home" theme={theme} color="#0b6f50" />
-              <QuickActionButton icon="briefcase.fill" label="Work" theme={theme} color="#3b82f6" />
-              <QuickActionButton icon="graduationcap.fill" label="FUTY" theme={theme} color="#f97316" />
-              <QuickActionButton icon="star.fill" label="Saved" theme={theme} color="#a855f7" />
+              <QuickActionButton icon="home" label="Home" theme={theme} color="#0b6f50" />
+              <QuickActionButton icon="briefcase" label="Work" theme={theme} color="#3b82f6" />
+              <QuickActionButton icon="school" label="FUTY" theme={theme} color="#f97316" />
+              <QuickActionButton icon="star" label="Saved" theme={theme} color="#a855f7" />
             </ScrollView>
           </View>
           <View style={{ height: insets.bottom + 20 }} />
@@ -161,7 +171,7 @@ function QuickActionButton({
   return (
     <TouchableOpacity style={[styles.quickActionButton, { borderColor: theme.backgroundElement }]}>
       <View style={[styles.quickActionIconContainer, { backgroundColor: `${color}1A` }]}>
-        <SymbolView name={icon as any} size={16} tintColor={color} />
+        <Ionicons name={icon as any} size={16} color={color} />
       </View>
       <ThemedText style={styles.quickActionLabel}>{label}</ThemedText>
     </TouchableOpacity>

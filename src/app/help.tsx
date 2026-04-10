@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { SymbolView } from 'expo-symbols';
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import {
   ImageBackground,
@@ -25,12 +25,12 @@ export default function HelpCenterScreen() {
       <View style={styles.header}>
         <View style={styles.headerLeft}>
           <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-            <SymbolView name="chevron.left" size={24} tintColor="#0b6f50" />
+            <Ionicons name="chevron-back" size={24} color="#0b6f50" />
           </TouchableOpacity>
           <ThemedText style={styles.headerTitle}>Help Center</ThemedText>
         </View>
         <TouchableOpacity style={styles.infoButton}>
-          <SymbolView name="info.circle" size={24} tintColor="#0b6f50" />
+          <Ionicons name="information-circle-outline" size={24} color="#0b6f50" />
         </TouchableOpacity>
       </View>
 
@@ -38,7 +38,7 @@ export default function HelpCenterScreen() {
         {/* Search Bar */}
         <View style={styles.searchSection}>
           <View style={styles.searchBar}>
-            <SymbolView name="magnifyingglass" size={20} tintColor="#94a3b8" />
+            <Ionicons name="search" size={20} color="#94a3b8" />
             <TextInput
               placeholder="Search for issues, trips, or safety..."
               placeholderTextColor="#94a3b8"
@@ -67,7 +67,7 @@ export default function HelpCenterScreen() {
           </View>
           <TouchableOpacity style={styles.getHelpButton}>
             <ThemedText style={styles.getHelpText}>Get help with this trip</ThemedText>
-            <SymbolView name="chevron.right" size={16} tintColor="#0b6f50" />
+            <Ionicons name="chevron-forward" size={16} color="#0b6f50" />
           </TouchableOpacity>
         </View>
 
@@ -77,28 +77,28 @@ export default function HelpCenterScreen() {
         </View>
         <View style={styles.topicsGrid}>
           <TopicCard
-            icon="person.fill"
+            icon="person"
             title="Account"
             subtitle="Profile & settings"
             iconColor="#2563eb"
             iconBg="#eff6ff"
           />
           <TopicCard
-            icon="wallet.pass.fill"
+            icon="wallet"
             title="Payment"
             subtitle="Cash, Cards & NGN"
             iconColor="#059669"
             iconBg="#ecfdf5"
           />
           <TopicCard
-            icon="shield.fill"
+            icon="shield"
             title="Safety"
             subtitle="Emergency & info"
             iconColor="#dc2626"
             iconBg="#fef2f2"
           />
           <TopicCard
-            icon="book.fill"
+            icon="book"
             title="App Guide"
             subtitle="How to use & promos"
             iconColor="#d97706"
@@ -124,7 +124,7 @@ export default function HelpCenterScreen() {
         <TouchableOpacity
           style={styles.contactButton}
           onPress={() => router.push('/contact-support' as any)}>
-          <SymbolView name="bubble.left.fill" size={20} tintColor="white" />
+          <Ionicons name="chatbubble" size={20} color="white" />
           <ThemedText style={styles.contactText}>Contact Support</ThemedText>
         </TouchableOpacity>
       </View>
@@ -136,7 +136,7 @@ function TopicCard({ icon, title, subtitle, iconColor, iconBg }: any) {
   return (
     <TouchableOpacity style={styles.topicCard}>
       <View style={[styles.topicIconContainer, { backgroundColor: iconBg }]}>
-        <SymbolView name={icon as any} size={20} tintColor={iconColor} />
+        <Ionicons name={icon as any} size={20} color={iconColor} />
       </View>
       <View>
         <ThemedText style={styles.topicTitle}>{title}</ThemedText>
@@ -150,7 +150,7 @@ function PopularItem({ label, isLast }: { label: string; isLast?: boolean }) {
   return (
     <TouchableOpacity style={[styles.popularItem, isLast && { borderBottomWidth: 0 }]}>
       <ThemedText style={styles.popularItemText}>{label}</ThemedText>
-      <SymbolView name="chevron.right" size={16} tintColor="#cbd5e1" />
+      <Ionicons name="chevron-forward" size={16} color="#cbd5e1" />
     </TouchableOpacity>
   );
 }

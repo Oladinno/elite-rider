@@ -1,4 +1,4 @@
-import { SymbolView } from 'expo-symbols';
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
@@ -19,12 +19,12 @@ export default function ActivityScreen() {
       <View style={[styles.header, { borderBottomColor: 'rgba(11, 111, 80, 0.1)' }]}>
         <View style={styles.headerLeft}>
           <TouchableOpacity onPress={() => router.back()} style={styles.iconButton}>
-            <SymbolView name="chevron.left" size={24} tintColor="#0b6f50" />
+            <Ionicons name="chevron-back" size={24} color="#0b6f50" />
           </TouchableOpacity>
           <ThemedText style={styles.headerTitle}>Your Activity</ThemedText>
         </View>
         <TouchableOpacity style={styles.iconButton}>
-          <SymbolView name="questionmark.circle" size={24} tintColor="#0b6f50" />
+          <Ionicons name="help-circle-outline" size={24} color="#0b6f50" />
         </TouchableOpacity>
       </View>
 
@@ -97,12 +97,12 @@ export default function ActivityScreen() {
                     <ThemedText style={styles.promoButtonText}>Learn More</ThemedText>
                   </TouchableOpacity>
                 </View>
-                <SymbolView name="gift.fill" size={60} tintColor="rgba(11, 111, 80, 0.1)" />
+                <Ionicons name="gift" size={60} color="rgba(11, 111, 80, 0.1)" />
               </View>
             </>
           ) : (
             <View style={styles.emptyContainer}>
-              <SymbolView name="calendar.badge.clock" size={48} tintColor="#cbd5e1" />
+              <Ionicons name="calendar" size={48} color="#cbd5e1" />
               <ThemedText style={styles.emptyText}>No upcoming rides scheduled</ThemedText>
             </View>
           )}

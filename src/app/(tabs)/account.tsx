@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { SymbolView } from 'expo-symbols';
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import {
   Image,
@@ -23,7 +23,7 @@ export default function AccountScreen() {
       <View style={styles.header}>
         <ThemedText style={styles.headerTitle}>Profile</ThemedText>
         <TouchableOpacity style={styles.settingsButton}>
-          <SymbolView name="gearshape.fill" size={24} tintColor="#64748b" />
+          <Ionicons name="settings" size={24} color="#64748b" />
         </TouchableOpacity>
       </View>
 
@@ -37,8 +37,10 @@ export default function AccountScreen() {
               }}
               style={styles.avatar}
             />
-            <TouchableOpacity style={styles.editBadge}>
-              <SymbolView name="pencil" size={14} tintColor="#0fbd58" />
+            <TouchableOpacity
+              style={styles.editBadge}
+              onPress={() => router.push('/edit-profile')}>
+              <Ionicons name="pencil" size={14} color="#0fbd58" />
             </TouchableOpacity>
           </View>
 
@@ -46,11 +48,11 @@ export default function AccountScreen() {
 
           <View style={styles.metaRow}>
             <View style={styles.badge}>
-              <SymbolView name="star.fill" size={12} tintColor="#0fbd58" />
+              <Ionicons name="star" size={12} color="#0fbd58" />
               <ThemedText style={styles.badgeText}>4.9</ThemedText>
             </View>
             <View style={[styles.badge, styles.verifiedBadge]}>
-              <SymbolView name="checkmark.seal.fill" size={12} tintColor="#0fbd58" />
+              <Ionicons name="checkmark-circle" size={12} color="#0fbd58" />
               <ThemedText style={[styles.badgeText, styles.verifiedText]}>Verified</ThemedText>
             </View>
           </View>
@@ -60,17 +62,18 @@ export default function AccountScreen() {
         <View style={styles.sectionsContainer}>
           <SettingsSection title="ACCOUNT">
             <SettingItem
-              icon="person.fill"
+              icon="person"
               label="Personal Info"
               subtitle="Edit name, phone, email"
+              onPress={() => router.push('/edit-profile')}
             />
             <SettingItem
-              icon="bookmark.fill"
+              icon="bookmark"
               label="Saved Places"
               subtitle="Home, Work, Frequent"
             />
             <SettingItem
-              icon="creditcard.fill"
+              icon="card"
               label="Wallet & Payment"
               subtitle="Cards, bank transfer"
               onPress={() => router.push('/wallet')}
@@ -78,29 +81,31 @@ export default function AccountScreen() {
           </SettingsSection>
 
           <SettingsSection title="PREFERENCES">
-            <SettingItem icon="bell.fill" label="Notifications" />
+            <SettingItem icon="notifications" label="Notifications" />
             <SettingItem icon="globe" label="Language" value="English" />
           </SettingsSection>
 
           <SettingsSection title="SUPPORT">
             <SettingItem
-              icon="questionmark.circle.fill"
+              icon="help-circle"
               label="Help Center"
               onPress={() => router.push('/help')}
             />
             <SettingItem
-              icon="exclamationmark.shield.fill"
+              icon="shield"
               label="Emergency Contacts"
               isCritical
             />
-            <SettingItem icon="doc.text.fill" label="Privacy Policy" />
+            <SettingItem icon="document-text" label="Privacy Policy" />
           </SettingsSection>
         </View>
 
         {/* Logout Button */}
         <View style={styles.logoutContainer}>
-          <TouchableOpacity style={styles.logoutButton}>
-            <SymbolView name="rectangle.portrait.and.arrow.right" size={20} tintColor="#dc2626" />
+          <TouchableOpacity
+            style={styles.logoutButton}
+            onPress={() => router.replace('/login' as any)}>
+            <Ionicons name="log-out-outline" size={20} color="#dc2626" />
             <ThemedText style={styles.logoutText}>Log Out</ThemedText>
           </TouchableOpacity>
           <ThemedText style={styles.versionText}>Version 2.4.0 • Adamawa Ride</ThemedText>
@@ -140,7 +145,7 @@ function SettingItem({
     <TouchableOpacity style={styles.settingItem} onPress={onPress}>
       <View style={styles.settingLeft}>
         <View style={[styles.settingIconContainer, isCritical && styles.criticalIconContainer]}>
-          <SymbolView name={icon as any} size={20} tintColor={isCritical ? '#ef4444' : '#64748b'} />
+          <Ionicons name={icon as any} size={20} color={isCritical ? '#ef4444' : '#64748b'} />
         </View>
         <View>
           <ThemedText style={styles.settingLabel}>{label}</ThemedText>
@@ -149,7 +154,7 @@ function SettingItem({
       </View>
       <View style={styles.settingRight}>
         {value && <ThemedText style={styles.settingValue}>{value}</ThemedText>}
-        <SymbolView name="chevron.right" size={16} tintColor="#cbd5e1" />
+        <Ionicons name="chevron-forward" size={16} color="#cbd5e1" />
       </View>
     </TouchableOpacity>
   );

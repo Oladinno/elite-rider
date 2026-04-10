@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { SymbolView } from 'expo-symbols';
+import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
   ScrollView,
@@ -24,7 +24,7 @@ export default function NotificationsScreen() {
         <View style={styles.headerTop}>
           <View style={styles.headerLeft}>
             <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-              <SymbolView name="arrow.left" size={24} tintColor="#0b6f50" />
+              <Ionicons name="arrow-back" size={24} color="#0b6f50" />
             </TouchableOpacity>
             <ThemedText style={styles.headerTitle}>Notifications</ThemedText>
           </View>
@@ -60,7 +60,7 @@ export default function NotificationsScreen() {
         </View>
 
         <NotificationItem
-          icon="car.fill"
+          icon="car"
           title="Trip Update"
           description="Your driver is arriving in 2 minutes."
           time="2m ago"
@@ -69,7 +69,7 @@ export default function NotificationsScreen() {
         />
 
         <NotificationItem
-          icon="tag.fill"
+          icon="pricetag"
           title="Promotion"
           description="Get 20% off your next 3 rides in Yola!"
           time="1h ago"
@@ -84,7 +84,7 @@ export default function NotificationsScreen() {
         </View>
 
         <NotificationItem
-          icon="lock.rotation"
+          icon="lock-closed"
           title="Account Security"
           description="Your password was successfully changed."
           time="Yesterday"
@@ -93,7 +93,7 @@ export default function NotificationsScreen() {
         />
 
         <NotificationItem
-          icon="wallet.pass.fill"
+          icon="wallet"
           title="Wallet Top-up"
           description="Wallet topped up with ₦2,000."
           time="Yesterday"
@@ -144,7 +144,7 @@ function NotificationItem({
         !unread && styles.readItem,
       ]}>
       <View style={[styles.iconContainer, { backgroundColor: iconBgColor }]}>
-        <SymbolView name={icon as any} size={24} tintColor={iconTintColor} />
+        <Ionicons name={icon as any} size={24} color={iconTintColor} />
       </View>
       <View style={styles.itemContent}>
         <View style={styles.itemHeader}>
